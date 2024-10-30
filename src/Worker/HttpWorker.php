@@ -72,7 +72,7 @@ final class HttpWorker implements WorkerInterface
                 $trustedHeaderSet = $trustedHeaders ?? (Request::HEADER_X_FORWARDED_FOR | Request::HEADER_X_FORWARDED_PORT | Request::HEADER_X_FORWARDED_PROTO);
             }
 
-            if (!is_int($trustedHeaderSet)) {
+            if (!\is_int($trustedHeaderSet)) {
                 throw new \UnexpectedValueException(sprintf('Unexpected type "%s" of trusted header', gettype($trustedHeaderSet)));
             }
 
