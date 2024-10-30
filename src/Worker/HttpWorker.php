@@ -73,7 +73,7 @@ final class HttpWorker implements WorkerInterface
             }
 
             if (!\is_int($trustedHeaderSet)) {
-                throw new \UnexpectedValueException(sprintf('Unexpected type "%s" of trusted header', gettype($trustedHeaderSet)));
+                throw new \UnexpectedValueException(sprintf('Unexpected type "%s" of trusted header', \gettype($trustedHeaderSet)));
             }
 
             if (!\is_string($trustedProxies) && !\is_array($trustedProxies)) {
