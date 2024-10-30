@@ -72,12 +72,16 @@ final class HttpWorker implements WorkerInterface
                 $trustedHeaderSet = $trustedHeaders ?? (Request::HEADER_X_FORWARDED_FOR | Request::HEADER_X_FORWARDED_PORT | Request::HEADER_X_FORWARDED_PROTO);
             }
 
+            if (!is_int($trustedHeaderSet)) {
+                throw new \UnexpectedValueException(sprintf('Unexpected type "%s" of trusted header', gettype($trustedHeaderSet)));
+            }
+
             if (!\is_string($trustedProxies) && !\is_array($trustedProxies)) {
                 throw new \InvalidArgumentException('Parameter "kernel.trusted_proxies" must be a string or an array');
             }
 
             $this->trustedProxies = \is_array($trustedProxies) ? $trustedProxies : array_map('trim', explode(',', $trustedProxies));
-            $this->trustedHeaderSet = (int) $trustedHeaderSet;
+            $this->trustedHeaderSet = $trustedHeaderSet;
         }
 
         $this->shouldRedeclareTrustedProxies = \in_array('REMOTE_ADDR', $this->trustedProxies, true);
