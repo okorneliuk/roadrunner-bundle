@@ -32,7 +32,7 @@
         "symfony/dependency-injection": "^6.0 || ^7.0",
         "symfony/http-kernel": "^6.0 || ^7.0",
         "symfony/yaml": "^6.0 || ^7.0",
-        "spiral/roadrunner": "^2023.1.0",
+        "spiral/roadrunner": "^2023.1.0 || ^2024.2.0",
         "spiral/roadrunner-worker": "dev-3.x",
         "spiral/goridge": "^4.0",
         "psr/log": "^1.1 || ^2.0 || ^3.0",
